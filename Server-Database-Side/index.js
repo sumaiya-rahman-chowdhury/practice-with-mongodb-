@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const port = 3000
+const port = 5000
 const cors = require('cors')
 app.use(cors())
 app.use(express.json())
@@ -22,6 +22,10 @@ async function run() {
   try {
     // Connect the client to the server	(optional starting in v4.7)
     await client.connect();
+    app.post('/users',(req,res)=>{
+        const user = req.body
+        console.log("name is " + user)
+    })
     // Send a ping to confirm a successful connection
     await client.db("admin").command({ ping: 1 });
     console.log("Pinged your deployment. You successfully connected to MongoDB!");
